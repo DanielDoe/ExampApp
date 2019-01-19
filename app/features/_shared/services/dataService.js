@@ -320,17 +320,35 @@ const types = Constants.dbActions;
   };
 
   export const addInvigilationAllawa = (elem) => {
-    const first_session_query = `SELECT count(*) as s_count FROM session WHERE p_id = ${elem.p_id} AND date = "${elem.date}"`;
+    const first_session_query = `SELECT count(*) as s_count, status FROM session JOIN personnel ON session.p_id = personnel.p_id WHERE session.p_id = ${elem.p_id} AND date = "${elem.date}"`;
     // runSelectQuery(first_session_query);
-    let s_count = runSelectQuery(first_session_query)[0].s_count;
+    let q_result = runSelectQuery(first_session_query)[0];
+    let s_count = q_result.s_count;
+    let status = q_result.status;
     if (s_count === 1){
+      let rate_type = "";
+
+      switch (status) {
+        case "Senior member":
+            rate_type = "rate_senior";
+            break;
+
+        case "Non-senior member":
+            rate_type = "rate_non_senior";
+            break;
+      }
       query = `INSERT INTO invigilation_allowances(
         date,
         p_id,
         session_count, 
-        duration_total
+        duration_total,
+        rate_min,
+        rate_hr
     ) 
-        SELECT date,p_id,count(*),sum(duration_mins) FROM session
+        SELECT date,p_id,count(*),sum(duration_mins),
+        (SELECT round((item_amount/60.0),6) FROM cash_item WHERE item = "${rate_type}"),
+        (SELECT item_amount FROM cash_item WHERE item = "${rate_type}")
+        FROM session
         WHERE p_id = ${elem.p_id} 
         AND date = "${elem.date}"`;
       runQuery(query);
@@ -364,12 +382,12 @@ const types = Constants.dbActions;
   export const generateInvigilation = () => {
     query = `SELECT 
     name,
-    round((sum(duration_total)/60),2) as hours,
+    (sum(duration_total)/60) as hours,
     status,
-    (SELECT item_amount from cash_item WHERE item = lower("rate")) as rate_hr,
-    round((sum(duration_total)*rate_min),2) as amount,
-    round(((SELECT item_amount from cash_item WHERE item = lower("Tax"))*sum(duration_total)*rate_min),2) as Tax,
-    round(((sum(duration_total)*rate_min)*(1 - (SELECT item_amount from cash_item WHERE item = lower("Tax") ))),2) as amount_due
+    rate_hr,
+    round((sum(duration_total)*round(rate_min,4)),2) as amount,
+    round(((SELECT item_amount from cash_item WHERE item = lower("Tax"))*sum(duration_total)*round(rate_min,4)),2) as Tax,
+    round(((sum(duration_total)*round(rate_min,4))*(1 - (SELECT item_amount from cash_item WHERE item = lower("Tax") ))),2) as amount_due
     FROM personnel
     JOIN invigilation_allowances 
     ON personnel.p_id = invigilation_allowances.p_id
@@ -388,6 +406,53 @@ const types = Constants.dbActions;
     JOIN s_config
     ON s_config.s_config_id = snack_allowances.s_config_id
     group by snack_allowances.p_id`;
+    return runSelectQuery(query);
+  };
+  
+  export const PersonalInvigilation = (name) => {
+    query = `SELECT 
+    name,
+    date,
+    round((sum(duration_total)/60),2) as hours,
+    status,
+    rate_hr,
+    round((sum(duration_total)*rate_min),2) as amount,
+    round(((SELECT item_amount from cash_item WHERE item = lower("Tax"))*sum(duration_total)*rate_min),2) as Tax,
+    round(((sum(duration_total)*rate_min)*(1 - (SELECT item_amount from cash_item WHERE item = lower("Tax") ))),2) as amount_due,
+    (
+      SELECT
+      sum(amount)
+      FROM personnel
+      JOIN snack_allowances
+      ON personnel.p_id = snack_allowances.p_id
+      JOIN s_config
+      ON s_config.s_config_id = snack_allowances.s_config_id
+        WHERE name = "${name}"
+        AND snack_allowances.date = invigilation_allowances.date
+      group by snack_allowances.date
+    ) as snack_allowance,
+    (
+      round(((sum(duration_total)*rate_min)*(1 - (SELECT item_amount from cash_item WHERE item = lower("Tax") ))),2) 
+      + 
+      (
+        SELECT
+        sum(amount)
+        FROM personnel
+        JOIN snack_allowances
+        ON personnel.p_id = snack_allowances.p_id
+        JOIN s_config
+        ON s_config.s_config_id = snack_allowances.s_config_id
+        WHERE name = "${name}"
+        AND snack_allowances.date = invigilation_allowances.date
+        group by snack_allowances.date
+      )
+    ) as day_total
+    FROM personnel
+    JOIN invigilation_allowances 
+    ON personnel.p_id = invigilation_allowances.p_id
+    WHERE name = "${name}"
+    group by invigilation_allowances.date`;
+
     return runSelectQuery(query);
   };
 

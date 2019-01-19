@@ -113,7 +113,7 @@ class Courses extends React.Component {
                 visible: this.state.visible,
                 okType: 'danger',
                 cancelText: 'No',
-                onOk: () => { this.props.courseRemoved(course); this.handleOk(); this.deleteAllocation()},
+                onOk: () => { this.props.courseRemoved(course); this.handleOk(); this.deleteAllocation(course)},
                 onCancel: () => this.handleCancel  
               })
         );

@@ -82,6 +82,7 @@ export default class CourseList extends React.Component {
         const columns: Array<Object> = [
             { title: 'ID', dataIndex: 'pid', key: 'pid' },
             { title: 'Name', dataIndex: 'p_id', key: 'p_id' },
+            { title: 'Date', dataIndex: 'date', key: 'date' },
             { title: 'Start', dataIndex: 'start', key: 'start' },
             { title: 'End', dataIndex: 'end', key: 'end' },
             { title: 'Minutes', dataIndex: 'duration_mins', key: 'duration_mins' },
