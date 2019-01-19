@@ -1,0 +1,59 @@
+/*=================================================================================================
+ = Classroom 
+=================================================================================================*/
+#classroom-container {
+	height: 85%;
+	width: 95%;
+	background: white;
+	border: 1px solid #dddddd;
+    margin: 30px auto;
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/*=================================================================================================
+ = Programs 
+=================================================================================================*/
+#program-container {
+	height: 85%;
+	width: 95%;
+	background: white;
+	border: 1px solid #dddddd;
+	margin: 30px auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/*=================================================================================================
+ = Teachers
+=================================================================================================*/
+#teachers-container {
+	height: 85%;
+	width: 95%;
+	background: white;
+	border: 1px solid #dddddd;
+    margin: 30px auto;
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.generate-tabs {
+	height: 100%;
+	width: 100%
+}
+
+.generate-tabs .ant-tabs-bar{
+	text-align: center;
+    margin: 2rem;
+    border-bottom: none;
+}
+
+/* .teacher-list-table .table-generater-container {
+	margin: 0rem 1rem;
+} */

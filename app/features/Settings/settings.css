@@ -1,0 +1,433 @@
+.pickerText {
+	font-size: 0.9rem;
+	display: block;
+	color: #466957;
+	padding-top: 20px;
+}
+
+.examCard {
+	width: 500px;
+	height: 700px;
+	margin: 50px auto;
+}
+
+.examdiv {
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+}
+
+.savedButton {
+	width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+/* .layoutBody{
+    height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+} */
+
+.timepicker {
+	width: 140px !important;
+	margin: 15px 0px;
+}
+
+.classTimepicker {
+	width: 80%;
+	margin: 5px 0px;
+}
+
+.days {
+	width: 20%;
+	margin: 25px 0px;
+}
+
+.labelText {
+	padding: 10px auto;
+	margin-bottom: 15px;
+}
+
+.dynamic-delete-button {
+	cursor: pointer;
+	position: relative;
+	top: 4px;
+	font-size: 24px;
+	color: #999;
+	transition: all 0.3s;
+}
+.dynamic-delete-button:hover {
+	color: #777;
+}
+.dynamic-delete-button[disabled] {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+.classPickerText {
+	font-size: 0.9rem;
+	display: block;
+	color: #466957;
+	padding: 15px 0px;
+}
+
+.modifyExcept {
+	margin: 10px 0px;
+}
+
+.exceptionTimepicker {
+	width: 100%;
+}
+
+.exceptionh2 {
+	font-size: 1.25rem;
+	color: #666666;
+	text-align: center;
+	padding-bottom: 0.25rem;
+	border-bottom: 1px solid #999999;
+	margin-bottom: 2rem;
+}
+
+.exception-container {
+	width: 95%;
+}
+
+.form-content {
+	margin: 10px auto;
+}
+
+.Container {
+	width: 90%;
+	height: 100%;
+	margin: 32px auto;
+	background: white;
+	border: 1px solid #d9d9d9;
+}
+
+.headlabel {
+	padding-bottom: 15px;
+}
+
+.classContainer {
+	width: 80%;
+	height: 80%;
+	margin: 32px auto;
+	background: white;
+	border: 1px solid #d9d9d9;
+}
+
+.classDiv {
+	width: 100%;
+	height: 100%;
+}
+
+/* .class-period-container {
+	width: 80%;
+	height: 80%;
+	margin: auto;
+} */
+
+.exception-Row {
+	width: 80%;
+	margin: auto;
+}
+
+.exam-container, .class-container, .college-container, .add-college-config {
+	width: 100%;
+	height: 100%;
+}
+
+.exam-container-element, .class-container-element {
+	width: 90%;
+    height: 85%;
+    margin: 3rem auto;
+    background: white;
+    border: 1px solid #d9d9d9;
+}
+
+.exam-period-container {
+	width: 80%;
+    height: 80%;
+    margin: 3rem auto;	
+}
+
+.class-period-container {
+	width: 80%;
+    height: 80%;
+    margin: 2rem auto 1rem auto;	
+}
+
+.add-college {
+	height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.college-grid-container {
+	width: 80%;
+}
+
+.element-style {
+	height: 3rem;
+	width: 100%;
+	font-size: large;
+}
+
+.element-style > input {
+	font-size: large;
+}
+
+.add-college-container {
+	width: 95%;
+}
+
+.header-element {
+	margin: 2rem auto;
+}
+
+.new-college-name {
+	font-size: large;
+}
+
+.anticon-close-circle {
+	cursor: pointer;
+	color: #ccc;
+	transition: color 0.3s;
+	font-size: 12px;
+}
+
+.anticon-close-circle:hover {
+	color: #999;
+}
+
+.anticon-close-circle:active {
+	color: #666;
+}
+
+.add-college-content {
+	height: 100%;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.text-content {
+	width: 90%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.new-college-name {
+    font-size: x-large;
+    font-weight: inherit;
+    color: #15a4b5;
+}
+
+.icon-container-style > img {
+	width: 60%;
+	height: 60%;
+}
+
+.button-style {
+	width: 30%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+	margin: 1rem auto;
+	font-size: large;
+}
+
+.setting-content-separater {
+	border-left: 1px solid rgba(0,0,0,.25);
+    height: 80vh;
+    position: absolute;
+    left: 30%;
+    margin: 1rem 0rem;
+}
+
+.side-image-container {
+	width: 100%;
+	height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.exam-image-container{
+	margin: 10rem auto 2rem;
+    padding-left: 4rem;
+}
+
+.exam-header-text {
+	text-align: center;
+    font-size: medium;
+    color: rgb(84, 94, 115);
+    padding-left: 2.2rem;
+}
+
+.exam-sub-header {
+	text-align: center;
+    padding: 0.5rem 0rem 1rem 3rem;
+    font-size: 0.9rem;
+    color: rgba(0,0,0,.65);
+}
+
+.class-header-text {
+	text-align: center;
+    font-size: medium;
+    color: rgb(27, 34, 74);
+    padding-left: 2.2rem;
+}
+
+.exam-sub-header {
+	text-align: center;
+    padding: 0.5rem 0rem 1rem 3rem;
+    font-size: 0.9rem;
+    color: rgb(70, 115, 140);
+}
+
+.add-exception-button {
+	width: 60%;
+    display: flex;
+    float: right;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.college-content-separater {
+	border-left: 1px solid rgba(0,0,0,.25);
+    height: 71vh;
+    position: absolute;
+    right: 43%;
+    margin: 1rem 0rem;
+}
+
+.modify-college {
+	width: 95%;
+    margin: 5rem 1rem 0rem 0rem;
+}
+
+.college-h2 {
+	text-align: center;
+}
+
+.college-container-element {
+	width: 90%;
+    height: 85%;
+    margin: 3rem auto;
+    background: white;
+}
+
+.college-Row {
+	height: 100%;
+}
+
+.add-college-button {
+	width: 30%;
+	height: 3rem;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin: 1rem auto;
+	font-size: large;
+}
+
+.cancel-college-button {
+	    float: left;
+		width: 50%;
+		height: 3rem;
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		margin: 0rem auto 0rem 1.0rem;
+		font-size: large;
+}
+
+.edit-college-button {
+	float: right; 
+	width: 50%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0rem auto 0rem 1.0rem;
+    font-size: large;
+}
+
+.editable-cell {
+	position: relative;
+  }
+  
+  .editable-cell-icon,
+  .editable-cell-icon-check {
+	cursor: pointer;
+  }
+  
+  .editable-cell-icon {
+	line-height: 14px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin-top: -7px;
+	display: none;
+  }
+  
+  td:hover .editable-cell-icon {
+	display: inline-block;
+  }
+  
+  .editable-cell-icon:hover,
+  .editable-cell-icon-check:hover {
+	color: #108ee9;
+  }
+
+  .exams-button-disable {
+	width: 90%;
+    margin: 5px 0px;
+    height: 2.2rem;
+    border: 1px solid rgba(34,36,38,.15);
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .exams-button-enable {
+	width: 80%;
+    margin: 5px 0px;
+    height: 2.2rem;
+    border: 1px solid #545e73;
+	background-color: #545e73;
+	color: white;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .exams-button-custom button:hover, .new-course button:focus {
+    border-color: #545e73;
+    background-color: #545e73;
+    color: white
+}
+
+.config-tab {
+	text-align: center;
+	margin: 2rem;
+	height: 100%
+}
+
+.config-tab .ant-tabs-bar{
+	border-bottom: none;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "ExamApp",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Exam management app",
+  "browserslist": "electron 1.6",
+  "engines": {
+    "node": "5.0.3",
+    "npm": "8.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/danieldoe33/examapp.git"
+  },
+  "author": "Daniel Doe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/danieldoe33/examapp/issues"
+  },
+  "homepage": "https://gitlab.com/danieldoe33/examapp#readme",
+  "dependencies": {
+    "better-sqlite3": "^4.1.0",
+    "phantom-html-to-pdf": "^0.5.6",
+    "react-pdf-generator": "^0.1.11"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.7.3"
+  },
+  "scripts": {
+    "rebuild": "electron-rebuild -f -w better-sqlite3"
+  }
+}

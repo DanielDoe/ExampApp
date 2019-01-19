@@ -1,0 +1,35 @@
+.sidemenu {
+    margin-top: 1rem;
+    /* height: calc(100% - 9rem); */
+}
+
+.sidemenu * {
+    font-family: 'Roboto-Regular', 'Roboto', 'Arial', 'Helvetica', sans-serif;
+}
+
+.sidemenu .ant-menu-item.ant-menu-item-selected {
+    background-color: #1976D2;
+}
+
+.side-text-container {
+    margin-left: .5rem;
+    font-size: 0.9rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.side-menu-content > .column {
+    display: inline;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.side-icon-container {
+    display: inline !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

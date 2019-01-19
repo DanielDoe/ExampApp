@@ -1,0 +1,28 @@
+appId: com.asqii.desktop.tertiary-timetable
+copyright: "Copyright © 2017 Asqii Inc."
+productName: "Tertiary Timetable"
+files:
+  - "build/"
+  - "node_modules/"
+  - "index.html"
+  - "main.prod.js"
+  - "main.prod.js.map"
+  - "package.json"
+dmg:
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
+win:
+  target:
+    - nsis
+linux:
+  target:
+    - deb
+    - AppImage
+directories:
+  buildResources: resources
+  output: release

@@ -1,0 +1,89 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    }
+  },
+  "plugins": [
+    "flowtype",
+    "flowtype-errors",
+    "import",
+    "promise",
+    "compat",
+    "react",
+    "jest"
+  ],
+  "rules": {
+    "arrow-body-style": "off",
+    "arrow-parens": [
+      "warn",
+      "as-needed"
+    ],
+    "block-spacing": "warn",
+    "class-methods-use-this": "off",
+    "comma-dangle": "off",
+    "comma-spacing": "warn",
+    "consistent-return": "off",
+    "dot-notation": "warn",
+    "eol-last": "warn",
+    "function-paren-newline": "off",
+    "indent": "off",
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "warn",
+    "keyword-spacing": "warn",
+    "no-empty": "warn",
+    "no-multi-spaces": "warn",
+    "no-nested-ternary": "warn",
+    "no-tabs": "off",
+    "no-trailing-spaces": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "warn",
+    "object-curly-spacing": "warn",
+    "object-curly-newline": "off",
+    "object-property-newline": "warn",
+    "padded-blocks": "off",
+    "prefer-arrow-callback": "warn",
+    "prefer-const": "warn",
+    "quotes": "warn",
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/no-unused-prop-types": "warn",
+    "react/prefer-stateless-function": "warn",
+    "react/prop-types": "warn",
+    "react/require-default-props": "warn",
+    "semi": "warn",
+    "space-before-blocks": "warn"
+  }
+}
