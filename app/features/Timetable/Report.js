@@ -46,7 +46,7 @@ export const Report = () => {
         let data = staff[j];
         let sn = j + 1;
         table += `<tr>
-            <td style="text-align: left;">${sn}</td>
+            <td style="text-align: center;">${sn}</td>
             <td style="text-align: left;">${data.name}</td>
             <td style="text-align: left;">${data.hours}</td>
             <td style="text-align: left;">${data.status}</td>
