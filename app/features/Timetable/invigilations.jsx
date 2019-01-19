@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-require ('../_shared/services/Report.js');
 import { Table, Button, Row, Col } from 'antd';
 import { generateInvigilation } from '../_shared/services/dataService';
-var conversion = require("phantom-html-to-pdf")();
+import { Report } from './Report';
 //import {ViewPDF} from '../_shared/services/pdfGenerator';
 
 
@@ -26,7 +25,6 @@ class Invigilation extends React.Component {
             dataSource: [] 
         };  
 
-        this.generatePDF = this.generatePDF.bind(this);
     }
 
     componentWillMount() {
@@ -37,22 +35,10 @@ class Invigilation extends React.Component {
                 key: id
             };
         });
-
+        
         this.setState({
             dataSource
         });
-    }
-
-    generatePDF(){
-        conversion({ html: "<h1>Hello World</h1>" }, function(err, pdf) {
-            var output = fs.createWriteStream('../_shared');
-            console.log(pdf.logs);
-            console.log(pdf.numberOfPages);
-              // since pdf.stream is a node.js stream you can use it
-              // to save the pdf to a file (like in this example) or to
-              // respond an http request.
-            pdf.stream.pipe(output);
-          });;
     }
 
     render() {
@@ -66,20 +52,20 @@ class Invigilation extends React.Component {
                         columns={columns} />
                     </div>
                     <Row style={{ marginTop: '1rem' }}>
-                    <Col span={8}>
-                    </Col>
-                    <Col span={8} />
-                    <Col span={8}>
-                    <div style={{ float: 'right', marginRight: '1rem' }}>
-                        <Button 
-                            type="primary" size='large'
-                            onClick={() => <ViewPDF />}
-                            >
-                            Generate</Button>
-                    </div>
-                    </Col>
-                </Row>
-                    
+                            <Col span={8}>
+                            </Col>
+                            <Col span={8} />
+                            <Col span={8}>
+                            <div style={{ float: 'right', marginRight: '1rem' }}>
+                                <Button 
+                                    type="primary" size='large'
+                                    onClick={() => console.log(Report())
+                                    }
+                                    >
+                                    Generate</Button>
+                            </div>
+                        </Col>
+                    </Row>    
             </div>
         );
     }
