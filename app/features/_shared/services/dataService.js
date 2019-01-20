@@ -233,6 +233,13 @@ const types = Constants.dbActions;
     return runSelectQuery(query);
   };
 
+  export const getAllocations = () => {
+    query = `select personnel.p_id,name, date, start, end, duration_mins, period from personnel join session on personnel.p_id = session.p_id `;
+    return runSelectQuery(query);
+  };
+
+  
+
   export const getLecturerId = (data, table) => {
     query = `SELECT id FROM ${table} WHERE surname = "${data[1]}" AND othername = "${data[2]}"`;
     return runSelectQuery(query);
