@@ -93,11 +93,8 @@ class Personal extends React.Component {
         });
     }
 
-   
-    
-
     renderTable(){
-        return(
+        return (
             <div className="table-container">
                 <div className="table-generater-container"> 
                     <Table
@@ -105,21 +102,7 @@ class Personal extends React.Component {
                         dataSource={this.state.dataSource}
                         style={{ margin: '0rem 1rem' }}
                         columns={columns} />
-                    </div>
-                    <Row style={{ marginTop: '1rem' }}>
-                    <Col span={8}>
-                    </Col>
-                    <Col span={8} />
-                    <Col span={8}>
-                    <div style={{ float: 'right', marginRight: '1rem' }}>
-                        <Button 
-                            type="primary" size='large'
-                            onClick={() => <ViewPDF />}
-                            >
-                            Generate</Button>
-                    </div>
-                    </Col>
-                </Row>      
+                </div>      
             </div>
         )
     }
@@ -129,18 +112,32 @@ class Personal extends React.Component {
         return (
             <div>
                 <div className="search-bar-person">
-                    <Select
-                        showSearch
-                        style={{ width: 200 }}
-                        placeholder="Select a person"
-                        optionFilterProp="children"
-                        onChange={this.handleChange.bind(this)}
-                        onFocus={this.handleFocus()}
-                        onBlur={this.handleBlur()}
-                        filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                    >
-                        {this.renderStaffData()}
-                    </Select>
+                    <Row style={{ marginBottom: '1rem' }}>
+                        <Col span={8}>
+                        <Select
+                            showSearch
+                            style={{ width: '20rem', marginLeft: '1.0rem' }}
+                            size="large"
+                            placeholder="Select a person"
+                            optionFilterProp="children"
+                            onChange={this.handleChange.bind(this)}
+                            onFocus={this.handleFocus()}
+                            onBlur={this.handleBlur()}
+                            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                        >
+                            {this.renderStaffData()}
+                        </Select>
+                        </Col>
+                        <Col span={8} />
+                        <Col span={8}>
+                        <div style={{ float: 'right', marginRight: '1rem' }}>
+                            <Button 
+                                type="primary" size='large'>
+                                Generate</Button>
+                        </div>
+                        </Col>
+                    </Row>
+                    
                 </div>
                 <div>
                     {this.renderTable()}
