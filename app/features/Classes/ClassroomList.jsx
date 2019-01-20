@@ -25,8 +25,7 @@ export default class ClassroomList extends React.Component{
     onSearch = e => {
         const value = e.target.value.toLowerCase()
         const newData = this.props.dataSource.filter(
-            s =>
-            s.name.toLowerCase().search(value) !== -1
+            s => s.session_counr.search(value) !== -1
         );
         this.setState({ dataSource: newData });
     }
@@ -69,25 +68,6 @@ export default class ClassroomList extends React.Component{
             return (
                 <div className="classroom-list column">
                     <div className="list-container">
-                    <div>
-                        <Row className="filter-options">
-                            <Col span={8}>
-                                <div className="filter-container-elements" />
-                            </Col>
-                            <Col span={8}>
-                                <div className="filter-container-elements" />            
-                            </Col>
-                            <Col span={8}>
-                                <div className="classroom-container">
-                                <Search
-                                    placeholder="input search text"
-                                    size="large"
-                                    onChange={this.onSearch}
-                                    />
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
                     <h2>List of Configurations</h2>
                     <div className="table-container">
                         <Table
