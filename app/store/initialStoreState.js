@@ -1,9 +1,9 @@
-import { getSelector } from '../features/_shared/services/dataService';   
+import { getSelector, getAllocations } from '../features/_shared/services/dataService';   
 
 export default {
     teachers: getSelector('personnel'),
     classes: getSelector('s_config'),
-    courses: getSelector('session'),
+    courses: getAllocations(),
     // programmes: getSelector('program'), 
     // departments: getSelector('department'),
     // classSettings: getSelector('class_period'),
