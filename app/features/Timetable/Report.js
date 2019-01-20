@@ -1,7 +1,5 @@
 import staff from './sample';
 
-
-
 export const Report = () => {
     let tableData = '';
     let data = '';
