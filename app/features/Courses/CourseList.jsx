@@ -39,7 +39,7 @@ export default class CourseList extends React.Component {
         const value = e.target.value.toLowerCase()
         const newData = this.props.dataSource.filter(
           s =>
-            // s.p_id.toLowerCase().search(value) !== -1 ||
+            s.name.toLowerCase().search(value) !== -1 ||
             s.period.toLowerCase().search(value) !== -1
         )
         this.setState({ dataSource: newData });
@@ -63,7 +63,7 @@ export default class CourseList extends React.Component {
         } if (period === 'evening') {
             return (
                 <div className="action-column grid">
-                    <Tag color="#f50">{period}</Tag>
+                    <Tag color="#00bcd4">{period}</Tag>
                 </div>
             )
         }
@@ -81,7 +81,7 @@ export default class CourseList extends React.Component {
 
         const columns: Array<Object> = [
             { title: 'ID', dataIndex: 'pid', key: 'pid' },
-            { title: 'Name', dataIndex: 'p_id', key: 'p_id' },
+            { title: 'Name', dataIndex: 'name', key: 'name' },
             { title: 'Date', dataIndex: 'date', key: 'date' },
             { title: 'Start', dataIndex: 'start', key: 'start' },
             { title: 'End', dataIndex: 'end', key: 'end' },
