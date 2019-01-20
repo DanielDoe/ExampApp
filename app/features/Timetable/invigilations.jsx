@@ -9,7 +9,7 @@ const columns: Array<Object> = [
     { title: 'SN', dataIndex: 'pid', key: 'id' },
     // { title: 'Title', dataIndex: 'title', key: 'title' },
     { title: 'Name', dataIndex: 'name', key: 'name' },
-    { title: 'Duration', dataIndex: 'hours', key: 'hours' },
+    { title: 'Time/Hr', dataIndex: 'hours', key: 'hours' },
     { title: 'Status', dataIndex: 'status', key: 'status' },
     { title: 'Rate/Hr', dataIndex: 'rate_hr', key: 'rate_hr' },
     { title: 'Amt(GHC)', dataIndex: 'amount', key: 'amount' },
@@ -45,27 +45,24 @@ class Invigilation extends React.Component {
         return (
             <div className="table-container">
                 <div className="table-generater-container">
+                    <Row style={{ marginBottom: '1rem' }}>
+                        <Col span={8}>
+                        </Col>
+                        <Col span={8} />
+                        <Col span={8}>
+                        <div style={{ float: 'right', marginRight: '1rem' }}>
+                            <Button 
+                                type="primary" size='large'>
+                                Generate</Button>
+                        </div>
+                        </Col>
+                    </Row>
                     <Table
                         className="teacher-list-table"
                         dataSource={this.state.dataSource}
                         style={{ margin: '0rem 1rem' }}
                         columns={columns} />
                     </div>
-                    <Row style={{ marginTop: '1rem' }}>
-                            <Col span={8}>
-                            </Col>
-                            <Col span={8} />
-                            <Col span={8}>
-                            <div style={{ float: 'right', marginRight: '1rem' }}>
-                                <Button 
-                                    type="primary" size='large'
-                                    onClick={() => console.log(Report())
-                                    }
-                                    >
-                                    Generate</Button>
-                            </div>
-                        </Col>
-                    </Row>    
             </div>
         );
     }
