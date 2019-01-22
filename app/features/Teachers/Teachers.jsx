@@ -18,6 +18,7 @@ const DEFAULT_EDIT_CONFIG = {
 const confirm = Modal.confirm;
 const Dialog = require('electron').remote.dialog;
 
+
 class Teachers extends React.Component {
 
     constructor(props) {
@@ -139,7 +140,7 @@ class Teachers extends React.Component {
           .filter((array, i) => array.length > 0 && i > 0)
           .map(element => {
             const newname = element[1];
-            addStaff('add', {
+            addStaff({
               name: element[1],
               member,
               status: element[2],
@@ -160,7 +161,7 @@ class Teachers extends React.Component {
                 <TeacherList
                     onEditClicked={this.triggerEditMode}
                     onDeleteClicked={this.teacherRemoved}
-                    dataSource={this.props.teachers} 
+                    dataSource={this.props.teachers}
                     />
 
                 <NewTeacher

@@ -28,8 +28,6 @@ class NewTeacherForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        // this.getDepartmentId = this.getDepartmentId.bind(this);
-        // this.getProgramId = this.getProgramId.bind(this);
     }
 
     componentDidMount() {
@@ -47,29 +45,11 @@ class NewTeacherForm extends React.Component {
                 name: nextProps.fieldData.name,
                 member: nextProps.fieldData.member,
                 status: nextProps.fieldData.status,
-                // program: getNameById(nextProps.fieldData.program, 'program')[0].name,
-                // department: getNameById(nextProps.fieldData.department, 'department')[0].name
             });
             this.setState({ counter: -1 });
           }
     }
 
-
-    // 💪 this will return the id of selected department
-    // getDepartmentId(value){
-    //     this.setState({
-    //         departmentid: getElementId(value, 'department')[0].id,
-    //         department: value
-    //     });
-    // }
-
-    // // 💪 this will return the id of selected department
-    // getProgramId(value){
-    //     // departmentId = getElementId(value, 'program')[0].id;
-    //     this.setState({
-    //         program: getElementId(value, 'program')[0].id
-    //     }); 
-    // }
 
     // reset form data when submitted
     handleReset = () => {
@@ -120,8 +100,6 @@ class NewTeacherForm extends React.Component {
                     name: values.name,
                     member: values.member,
                     status: values.status,
-                    // member: this.state.member,
-                    // status: this.state.status
                 };
                 console.log(teacher);
                 this.props.onTeacherEditted(teacher);
@@ -169,7 +147,7 @@ class NewTeacherForm extends React.Component {
     }
 
     renderStatus(){
-        const memTypes = ['Non-senior member', 'Senior member'];
+        const memTypes = ['Non-senior Member', 'Senior Member'];
         return memTypes.map((member) => {
             return <Option value={member} key={`title-${member}`}>{member}</Option>;
         });
@@ -216,38 +194,6 @@ class NewTeacherForm extends React.Component {
             <div>
                 <Form onSubmit={this.handleSubmit} className="new-teacher column">
                     <h2>{headerText} staff members</h2>
-                    {/* <label htmlFor="new-teacher-title">Title</label> */}
-                    {/* <FormItem
-                        hasFeedback
-                        validateStatus={titleError ? 'error' : ''}
-                        help={titleError || ''}
-                    >
-                        {getFieldDecorator('title', {
-                            rules: [
-                                { required: true, message: 'Please select a valid title' },
-                            ],
-                        })(
-                            <Select
-                                placeholder="e.g. Mr."
-                            >
-                                {this.renderTitles()}
-                            </Select>
-                        )}
-                    </FormItem>
-                    <label htmlFor="new-teacher-othernames">Staff ID</label>
-                    <FormItem 
-                        style={{textAlign: '-webkit-center'}}
-                        hasFeedback
-                        // label="Username"
-                        validateStatus={staffIDError ? 'error' : ''}
-                        help={staffIDError || ''}
-                    >
-                        {getFieldDecorator('staff', {
-                            rules: [{ required: true, message: 'Please input your other names!' }],
-                        })(
-                            <Input placeholder="Doe" />
-                        )}
-                    </FormItem> */}
                     <label htmlFor="new-teacher-surname">Staff name</label>
                     <FormItem 
                         style={{textAlign: '-webkit-center'}}
@@ -256,7 +202,7 @@ class NewTeacherForm extends React.Component {
                         help={nameError || ''}
                     >
                         {getFieldDecorator('name', {
-                            rules: [{ required: true, message: 'Please input your surname!' }],
+                            rules: [{ required: true, message: 'enter name!' }],
                         })(
                             <Input placeholder="Dr. D. John" />
                         )}
@@ -272,7 +218,7 @@ class NewTeacherForm extends React.Component {
                             help={memTyError || ''}
                         >
                             {getFieldDecorator('member', {
-                                rules: [{ required: true, message: 'Please input your other names!' }],
+                                rules: [{ required: true, message: 'select menber!' }],
                             })(
                                 <Select
                                     // className="form-input"
@@ -294,7 +240,7 @@ class NewTeacherForm extends React.Component {
                             help={statusError || ''}
                         >
                             {getFieldDecorator('status', {
-                                rules: [{ required: true, message: 'Please input your other names!' }],
+                                rules: [{ required: true, message: 'status!' }],
                             })(
                                 <Select
                                     // className="form-input"

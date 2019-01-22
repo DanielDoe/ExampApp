@@ -44,7 +44,7 @@ export default class ClassroomList extends React.Component{
                 { title: 'ID', dataIndex: 'pid', key: 'id' },
                 { title: 'Session', dataIndex: 'session_count', key: 'session_count' },
                 { title: 'Snack', dataIndex: 'snack_count', key: 'snack_count' },
-                { title: 'Lunch', dataIndex: 'lunch_count', key: 'lunch_count' },
+                // { title: 'Lunch', dataIndex: 'lunch_count', key: 'lunch_count' },
                 { title: 'Amount', dataIndex: 'amount', key: 'amount' },
                 {
                     title: ' ',

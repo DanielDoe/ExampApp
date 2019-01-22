@@ -33,7 +33,7 @@ class NewClassroomForm extends React.Component {
             this.props.form.setFieldsValue({
                 session: nextProps.fieldData.session_count,
                 snack: nextProps.fieldData.snack_count,
-                lunch: nextProps.fieldData.lunch_count
+                // lunch: nextProps.fieldData.lunch_count
             });
             this.setState({ counter: -1 });
           }
@@ -73,15 +73,15 @@ class NewClassroomForm extends React.Component {
             const cashItem = getSelector('cash_item');
             console.log(cashItem);
             const snackPrice = cashItem.filter(item => item.item === "Snack")[0].item_amount;
-            const lunchPrice = cashItem.filter(item => item.item === "Lunch")[0].item_amount;
+            // const lunchPrice = cashItem.filter(item => item.item === "Lunch")[0].item_amount;
 
 			if (!err) {
                 const classDetail: Object = {
                     id: this.props.id,
                     session_count: values.session,
                     snack_count: values.snack,
-                    amount: ((values.snack * snackPrice) + (values.lunch * lunchPrice)),
-                    lunch_count: values.lunch
+                    amount: values.snack * snackPrice,
+                    // lunch_count: values.lunch
                 };
                 // console.log(classDetail);
                 this.props.onClassEditted(classDetail);
@@ -121,19 +121,19 @@ class NewClassroomForm extends React.Component {
         const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched, getFieldValue } = this.props.form;
 		const classNameError = isFieldTouched('session') && getFieldError('session');
         const classSizeError = isFieldTouched('snack') && getFieldError('snack'); 
-        const examsError = isFieldTouched('lunch') && getFieldError('lunch');
+        // const examsError = isFieldTouched('lunch') && getFieldError('lunch');
         // const othersError = getFieldError('otherSize');   
 
         const className = getFieldValue('session');
         const classSize = getFieldValue('snack');
-        const examSize = getFieldValue('lunch');
+        // const examSize = getFieldValue('lunch');
 
         // const isEmpty = !className || !classSize || examSize;
 
         return (
             <div>
                 <Form onSubmit={this.handleSubmit} className="column new-classroom">
-                <h2>{header} Food Config</h2>
+                <h2>{header} Meals config</h2>
                     <label htmlFor="new-classroom-name">Session</label>
                     <FormItem 
                         style={{textAlign: '-webkit-center'}}
@@ -143,14 +143,12 @@ class NewClassroomForm extends React.Component {
                         help={classNameError || ''}
                     >
                         {getFieldDecorator('session', {
-                            rules: [{ required: true, message: 'Please input Session!' }],
+                            rules: [{ required: true,  type: 'number', message: 'enter session!' }],
                         })(
                             <InputNumber min={1} max={5} style={{ width: '100%' }} placeholder="e.g. " />
                         )}
                     </FormItem>
-                    <Row>
-                        <Col span={12}>
-                        <label htmlFor="new-classroom-std-cap">Snack</label>
+                        <label htmlFor="new-classroom-std-cap">Amount</label>
                             <FormItem 
                                 // style={{textAlign: '-webkit-center'}}
                                 hasFeedback
@@ -159,30 +157,12 @@ class NewClassroomForm extends React.Component {
                             >
                                 {getFieldDecorator('snack', {
                                     rules: [{
-                                        required: true, type: 'number', message: 'The input is not valid',
+                                        required: true, type: 'number', message: 'snack amount!',
                                     }],
                                 })(
                                     <InputNumber min={0} max={5} style={{ width: '100%', marginRight:'0.5rem' }} placeholder="e.g. 50" />
                                 )}
-                            </FormItem>
-                        </Col>
-                        <Col span={12}>
-                            <label htmlFor="new-classroom-std-cap-other">Lunch</label>
-                            <FormItem
-                                hasFeedback
-                                validateStatus={examsError ? 'error' : ''}
-                                help={examsError || ''}
-                            >
-                                {getFieldDecorator('lunch', {
-                                    rules: [{
-                                        required: true, type: 'number', message: 'The input is not valid',
-                                    }],
-                                })(
-                                    <InputNumber min={0} max={5} style={{ width: '100%', marginLeft:'0.5rem' }} placeholder="e.g. 50" />
-                                )}
-                            </FormItem>        
-                        </Col>
-                    </Row>
+                            </FormItem>   
                     <FormItem>
                         <Button 
                             type="primary" 
@@ -190,7 +170,7 @@ class NewClassroomForm extends React.Component {
                             // className="" 
                             style={{ margin: '20px auto', width: '100%', backgroundColor: '' }}
                             htmlType="submit" 
-                            disabled={this.hasErrors(getFieldsError())}>{buttonText} package</Button>
+                            disabled={this.hasErrors(getFieldsError())}>{buttonText} meal amount</Button>
                     </FormItem>
                     {this.renderCancel()}
                 </Form>

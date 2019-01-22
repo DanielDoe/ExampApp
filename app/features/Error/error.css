@@ -1,0 +1,37 @@
+.compter-img {  
+    width: 30%;
+    max-width: 20rem;
+    height: 30%;
+    /* text-align: center; */
+    display: block;
+    margin: auto;
+    padding-top: 6%;
+    /* margin-right: auto; */
+}
+
+.p-header-text{
+    font-size: x-large;
+    text-align: center;
+    margin: 1rem auto 2rem auto;
+}
+
+.p-features-text{
+    font-size: larger !important;
+    margin: 2rem 0rem 2rem 1rem !important;
+    float: left !important;
+}
+
+.img-features {
+    float: right;
+    width: 40%;
+    max-width: 10rem;
+}
+
+@media only screen and (max-width: 880px){
+    .p-features-text{
+        font-size: small !important;
+        margin: 0rem 0rem 2rem 1rem !important;
+        float: left !important;
+    }
+    
+}

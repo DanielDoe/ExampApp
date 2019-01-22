@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Layout from 'antd/lib/layout';
 import Icon from 'antd/lib/icon';
 import { Switch, Route } from 'react-router-dom';
-
 import './dashboard.css';
 import { HeaderComponent } from './header';
 import DashboardRoutes from './dashboardRoutes';
@@ -13,7 +12,6 @@ import ErrorComponent from '../Error';
 
 const { Sider, Content, Header } = Layout;
 
-// const header = 'Hello Bitches';
 
 let header;
 
@@ -48,9 +46,6 @@ export default class Dashboard extends React.Component {
     }
 
     renderHeader(headertext:?string) {
-        console.log('Text: ', headertext);
-        // this.setState({ title: headertext });
-        // return <HeaderComponent headerTitle={headertext} />;
     }
 
     renderBody() {
@@ -88,7 +83,7 @@ export default class Dashboard extends React.Component {
                     collapsed={this.state.siderCollapsed}>
 
                     <div className="logo">
-                        <img src={Logo} alt="Tertiary Timetable Logo" />
+                        <img src={Logo} alt="ExamApp Logo" />
                     </div>
 
                     <Sidemenu

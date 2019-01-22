@@ -13,19 +13,19 @@ let lecturerId = [];
 let programId = null;
 
 function onChange(date, dateString) {
-    console.log(date, dateString);
+    // console.log(date, dateString);
 }
 
 function handleChange(value) {
-    console.log(`selected ${value}`);
+    // console.log(`selected ${value}`);
   }
   
   function handleBlur() {
-    console.log('blur');
+    // console.log('blur');
   }
   
   function handleFocus() {
-    console.log('focus');
+    // console.log('focus');
   }
 
 class NewCourseForm extends React.Component {
@@ -58,9 +58,6 @@ class NewCourseForm extends React.Component {
                 start: moment(nextProps.fieldData.start, 'HH:mm A'),
                 end: moment(nextProps.fieldData.end, 'HH:mm A'),
                 date: moment(nextProps.fieldData.date, 'LL')
-                // semester: nextProps.fieldData.semester,
-                // hasLab: (nextProps.fieldData.hasLab === 1) ? 'yes' : 'no',
-                // level: nextProps.fieldData.level
             });
             this.setState({ counter: -1 });
           }
@@ -117,7 +114,7 @@ class NewCourseForm extends React.Component {
 
 			if (!err) {
                 const course: Object = {
-                    session_id: this.props.id,
+                    session_id: values.session_id,
                     date: values['date'],
                     // name: getElementId(fieldsValue.name, 'personnel'),
                     p_id: getElementId(fieldsValue.staff, 'personnel')[0].p_id,
@@ -217,7 +214,7 @@ class NewCourseForm extends React.Component {
                                     onChange={handleChange}
                                     onFocus={handleFocus}
                                     onBlur={handleBlur}
-                                    // filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                    filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                                 >
                                     {this.renderStaffData()}
                                 </Select>,
@@ -250,7 +247,7 @@ class NewCourseForm extends React.Component {
                                     help={endError || ''}
                                 >
                                     {getFieldDecorator('end', {
-                                        rules: [{ required: true, message: 'year/level!' }],
+                                        rules: [{ required: true, message: 'end??' }],
                                     })(
                                         <TimePicker 
                                         // onChange={onChange} 

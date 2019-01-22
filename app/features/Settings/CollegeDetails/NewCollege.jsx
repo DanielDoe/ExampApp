@@ -162,9 +162,9 @@ class NewCollegeForm extends React.Component {
                                                     help={itemError || ''}
                                                     >
                                                         {getFieldDecorator('item', {
-                                                            rules: [{ required: true, message: 'Please add a valid department!' }],
+                                                            rules: [{ required: true, message: 'cash item!!' }],
                                                         })(
-                                                            <Input 
+                                                            <Input
                                                                 // size="large" 
                                                                 placeholder="e.g Snacks"
                                                                 // suffix={suffix}
@@ -181,7 +181,7 @@ class NewCollegeForm extends React.Component {
                                                     help={amountError || ''}
                                                     >
                                                         {getFieldDecorator('amount', {
-                                                            rules: [{ required: true, message: 'enter valid number!' }],
+                                                            rules: [{ required: true, type: 'number',  message: 'valid number or amount!' }],
                                                         })(
                                                             <InputNumber
                                                                 placeholder="e.g 10"

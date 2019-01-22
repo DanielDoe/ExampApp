@@ -76,8 +76,8 @@
 import path from 'path';
 import fs from 'fs';
 import { Constants } from '../../../constants';
+import { SQLiteSchema, cash_items, configs } from './sqliteSchema';
 
-// const dbname = 'asqiiTimetable.db';
 const dbname = 'examdb.db';
 const DATABASE_FILEPATH = path.resolve(process.cwd(), dbname);
 const Database = require('better-sqlite3');
@@ -92,7 +92,57 @@ let globalDatabaseReference;
  * Get an SQLite instance for storing and retrieving data.
  */
 export function getSQLInstance(): * {
-	if (!globalDatabaseReference) globalDatabaseReference = new Database(DATABASE_FILEPATH);
+	if (!globalDatabaseReference) {
+		// No database reference was found. Create the database and insert tables
+		globalDatabaseReference = new Database(DATABASE_FILEPATH);
+		// TODO: Create tables
+		for (let index = 0; index < SQLiteSchema.length; index++) {
+			const element = SQLiteSchema[index];
+			globalDatabaseReference.exec(element.createQuery);
+		}
+		
+
+		// checking if initial data has been created
+		const query = `SELECT * from init`
+		const res = globalDatabaseReference.prepare(query)
+
+		for (let index = 0; index < cash_items.length; index++) {
+			const element = cash_items[index];
+			if(!res.get()){
+				let insertQuery = `INSERT INTO cash_item(
+					item, 
+					item_amount
+				) VALUES (
+					"${element.name}",
+					${element.amount}
+				);`
+				const stmt = globalDatabaseReference.prepare(insertQuery);
+				stmt.run();
+			}
+		}
+
+		for (let index = 0; index < configs.length; index++) {
+			const element = configs[index];
+			if(!res.get()){
+				let insertQuery = `INSERT INTO s_config( 
+					snack_count,
+					amount,
+					session_count
+				) VALUES (
+					${element.snack},
+					${element.amount},
+					${element.session}
+				);`
+				const stmt2 = globalDatabaseReference.prepare(insertQuery);
+				stmt2.run();
+			}
+		}
+
+		if(res.get() === undefined){
+			// insert dummy data
+			globalDatabaseReference.exec("insert into init(id, status) values(1, 1)")
+		}
+	};
 	return globalDatabaseReference;
 }
 

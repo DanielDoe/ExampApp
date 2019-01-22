@@ -57,3 +57,21 @@
 /* .teacher-list-table .table-generater-container {
 	margin: 0rem 1rem;
 } */
+
+.input-report {
+	margin: 0rem 1rem;
+    width: 65%;
+    height: 2.2rem;
+    text-align: center;
+    border: 1px solid #d4d4d5;
+    border-radius: 4px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color:#d4d4d5;
+	opacity: 1; /* Firefox */
+  }
+
+  .teacher-filter-option{
+	margin-bottom: 0rem;
+  }

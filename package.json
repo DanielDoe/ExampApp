@@ -1,9 +1,10 @@
 {
-  "name": "ExamApp",
+  "name": "exam-app",
   "version": "0.0.1",
   "private": true,
   "description": "Exam management app",
   "browserslist": "electron 1.6",
+  "main": "main.prod.js",
   "engines": {
     "node": "5.0.3",
     "npm": "8.1.4"
@@ -19,16 +20,15 @@
   },
   "homepage": "https://gitlab.com/danieldoe33/examapp#readme",
   "dependencies": {
-    "@react-pdf/renderer": "^1.2.0",
     "antd": "^2.13.9",
     "axios": "^0.17.0",
     "date-fns": "^1.29.0",
+    "electron-notifications": "^1.0.0",
     "flow": "^0.2.3",
     "history": "^4.7.2",
-    "jspdf": "^1.5.3",
-    "jspdf-react": "^1.0.9",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
+    "node-notifier": "^5.3.0",
     "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-dnd": "^2.6.0",
@@ -37,7 +37,6 @@
     "react-hot-loader": "3.0.0-beta.6",
     "react-html-converter": "^0.3.2",
     "react-icons-kit": "^1.1.5",
-    "react-pdf": "^4.0.2",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",

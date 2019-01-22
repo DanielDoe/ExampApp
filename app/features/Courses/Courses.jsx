@@ -32,6 +32,7 @@ class Courses extends React.Component {
         this.courseEditted = this.courseEditted.bind(this);
         this.courseRemoved = this.courseRemoved.bind(this);
         this.triggerEditMode = this.triggerEditMode.bind(this);
+        this.deleteAllocation = deleteAllocation.bind(this)
 
     }
 
@@ -70,9 +71,10 @@ class Courses extends React.Component {
             this.cancelEditMode();
 
         } else {
-            this.props.courseAdded(course);
-            addAllocations(course);
+            let session_id_from_db = addAllocations(course);
             addInvigilationAllawa(course);
+            course.session_id = session_id_from_db;
+            this.props.courseAdded(course);
             // courseQuery('add', course);
             // addCourse(course);
             // const course_id = getElementId(course.name, 'course');
@@ -103,10 +105,11 @@ class Courses extends React.Component {
      */
 
       courseRemoved(course: Object) {
+        console.log(course);
         return (
             confirm({
-                title: `Do you want to delete ${course.p_id} allocation?`,
-                content: `When the Yes button is clicked, ${course.p_id} allocation will be 
+                title: `Do you want to delete ${course.name}'s allocation?`,
+                content: `When the Yes button is clicked, ${course.name}'s allocation will be 
                 deleted permanently with all data related to it.
                 Please proceed with caution`,
                 okText: 'Yes',

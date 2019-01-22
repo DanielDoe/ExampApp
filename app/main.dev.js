@@ -13,9 +13,16 @@
  */
 /* eslint global-require:0 */
 
-import { app, BrowserWindow } from 'electron';
+import {
+    app,
+    BrowserWindow,
+    ipcMain,
+    Notification
+} from 'electron';
+import fs from 'fs';
 import path from 'path';
 import modules from 'module';
+const notifier = require('electron-notifications');
 
 import MenuBuilder from './menu';
 
@@ -60,15 +67,17 @@ app.on('ready', async () => {
     }
 
     mainWindow = new BrowserWindow({
-        width: 1024,
-        height: 768,
-        minWidth: 800,
-        minHeight: 600,
+        width: 1380,
+        height: 930,
+        minWidth: 1280,
+        minHeight: 800,
         show: false
     });
 
     // Disable the menu bar and set as full screen always
     mainWindow.maximize();
+
+    mainWindow.setMenu(null);
 
     // Setup the location of the index.html and pass it as a file
     mainWindow.loadURL(`file://${__dirname}/index.html`);
@@ -91,3 +100,77 @@ app.on('ready', async () => {
     const menuBuilder = new MenuBuilder(mainWindow);
     menuBuilder.buildMenu();
 });
+
+function doNotify(message){
+    notifier.notify('Report status', {
+        message: message,
+        buttons: ['Dismiss'],
+      })
+}
+
+ipcMain.on('GENERATION', async (_, message) => {
+    // Write the content of the message to an HTML file using fs
+    const filename = await writeFile(message);
+
+    // Open a new window
+    let childWindow = null;
+    childWindow = new BrowserWindow({
+        width: 1200,
+        height: 700,
+        minWidth: 900,
+        minHeight: 600,
+        show: false
+    })
+    childWindow.loadURL(filename);
+
+    childWindow.webContents.on('did-finish-load', () => {
+        if (!childWindow) {
+            throw new Error('"childWindow" is not defined');
+        }
+
+        childWindow.webContents.printToPDF({marginsType: 0}, (error, data) => {
+            if (error) {
+                throw error;
+            }
+
+            fs.writeFile(`${filename}.pdf`, data, (err) => {
+                if (err) {
+
+                    doNotify('Unable to generate report');
+                    throw err;
+                }
+
+                childWindow.close();
+                doNotify('Report generated successfully. Check your desktop');
+                console.log('Complete');
+            });
+        });
+        // childWindow.show();
+        // childWindow.focus();
+    });
+
+    childWindow.on('closed', () => {
+        // Dereference the main window.
+        // TODO even though there is a memory footprint, we will find a way to take it out later
+        childWindow = null;
+    });
+
+    // Generate PDF
+
+    // Close window
+
+    // Send PDF Success back to renderer thread
+    // console.log(event, message);
+})
+
+function writeFile(content) {
+    return new Promise((resolve, reject) => {
+        const filename = path.resolve(app.getPath('desktop'), 'Report')
+        fs.writeFile(filename, content, (err, output) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(filename);
+        })
+    })
+}

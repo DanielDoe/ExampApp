@@ -41,7 +41,7 @@ export default function CollegeList(props) {
             <hr />
             <div className="college-container">
                 <Table
-                    className="programme-list-table"
+                    className="course-list-table"
                     dataSource={dataSource}
                     columns={columns} />
             </div>

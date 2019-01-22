@@ -9,16 +9,18 @@ export default class TeacherList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          dataSource: [],
+          dataSource: []
         };
 
-        this.state.dataSource = this.props.dataSource;
+        this.state.dataSource = this.props.dataSource
+
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({
             dataSource: nextProps.dataSource
         });
+      
     }
 
     onSearch = e => {
@@ -71,7 +73,7 @@ export default class TeacherList extends React.Component {
             <div className="teacher-list column">
                 <div className="list-container">
                     <div>
-                        <Row className="filter-options">
+                        <Row className="teacher-filter-option">
                             <Col span={8}>
                                 <div className="filter-container-elements" />
                             </Col>
@@ -84,7 +86,6 @@ export default class TeacherList extends React.Component {
                                     placeholder="input search text"
                                     size="large"
                                     onChange={this.onSearch}
-                                    style={{ width: 250 }}
                                     />
                                 </div>
                             </Col>
@@ -94,6 +95,8 @@ export default class TeacherList extends React.Component {
                     <div className="table-container">
                         <Table
                             className="teacher-list-table"
+                            pagination={{ pageSize: 10 }}
+                            //scroll={{ y: 200 }}
                             dataSource={dataSource}
                             columns={columns} />
                     </div>

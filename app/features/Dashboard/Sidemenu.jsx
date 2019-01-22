@@ -51,6 +51,11 @@ export default function Sidemenu(props) {
                     <span>Programmes</span>
                 </Menu.Item> */}
 
+                {/* <Menu.Item key="/settings/error">
+                    <Icon type="team" />
+                    <span>Error page</span>
+                </Menu.Item> */}
+
                 <Menu.Item key="/settings/teachers">
                     <Icon type="team" />
                     <span>Add staff</span>

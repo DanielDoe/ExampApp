@@ -36,11 +36,11 @@ export default class CourseList extends React.Component {
     }  
 
     onSearch = e => {
-        const value = e.target.value.toLowerCase()
+        console.log(e.target.value);
+        const value = e.target.value.toLowerCase();
         const newData = this.props.dataSource.filter(
           s =>
-            s.name.toLowerCase().search(value) !== -1 ||
-            s.period.toLowerCase().search(value) !== -1
+            s.name.toLowerCase().search(value) !== -1 
         )
         this.setState({ dataSource: newData });
     }
@@ -75,7 +75,7 @@ export default class CourseList extends React.Component {
                 ...element,
                 pid: id + 1,
                 key: id,
-                p_id: getNameById(element.p_id, 'personnel')[0].name 
+                name: getNameById(element.p_id, 'personnel')[0].name 
             };
         });
 
@@ -120,40 +120,10 @@ export default class CourseList extends React.Component {
                     <Row className="filter-options">
                         <Col span={8}>
                             <div className="filter-container-elements">
-                                {/* <Select
-                                    showSearch
-                                    style={{ width: 200 }}
-                                    placeholder="Select a date"
-                                    optionFilterProp="children"
-                                    onChange={handleChange}
-                                    onFocus={handleFocus}
-                                    onBlur={handleBlur}
-                                    size="large"
-                                    filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                                >
-                                    <Option value="jack">Jack</Option>
-                                    <Option value="lucy">Lucy</Option>
-                                    <Option value="tom">Tom</Option>
-                                </Select> */}
                             </div>
                         </Col>
                         <Col span={8}>
                             <div className="filter-container-elements">
-                                {/* <Select
-                                    showSearch
-                                    style={{ width: 200 }}
-                                    placeholder="Select a session"
-                                    optionFilterProp="children"
-                                    onChange={handleChange}
-                                    onFocus={handleFocus}
-                                    onBlur={handleBlur}
-                                    size="large"
-                                    filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                                >
-                                    <Option value="jack">Jack</Option>
-                                    <Option value="lucy">Lucy</Option>
-                                    <Option value="tom">Tom</Option>
-                                </Select> */}
 
                             </div>            
                         </Col>

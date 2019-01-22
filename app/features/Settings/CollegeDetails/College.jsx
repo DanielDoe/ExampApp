@@ -4,7 +4,6 @@ import { Row, Col, Tabs, Modal, Icon } from 'antd';
 import { addCashItem, updateCashItem, deleteCashItem } from '../../_shared/services/dataService'; 
 import NewCollege from './NewCollege';
 import Classes from '../../Classes';
-// import ClassPeriods from './ClassPeriods';
 import * as Actions from './collegeActions';
 import classImage from '../../_shared/assets/classroom.png';
 import CollegeList from './CollegeList';
@@ -58,7 +57,6 @@ class CollegeSettings extends React.Component {
     // Edit (or add) a college
     collegeEditted(college: Object) {
         if (this.state.editMode === true && college.id !== -1) {
-            console.log(college);
             // We are in edit mode. Find the college and splice the list
             // const doEditing = (array: Array<Object>) => {
             //     return array.map(element => (element.id === college.id) ? college : element);
@@ -116,30 +114,7 @@ class CollegeSettings extends React.Component {
             field: college
         });
     }
-
-    /*
-        <div style={{ height: '100%', width: '100%' }}>
-                    <Row className="college-Row">
-                        <Col span={14} style={{ height: '100%' }}>    
-                            <NewCollege 
-                                editMode={this.state.editMode}
-                                id={this.state.editID}
-                                fieldData={this.state.field}
-                                onCollegeEditted={this.collegeEditted}
-                                onCancel={this.cancelEditMode}
-                            />
-                        </Col>  
-                        <div className="college-content-separater" />
-                        <Col span={10}>
-                        <CollegeList 
-                                onEditClicked={this.triggerEditMode}
-                                onDeleteClicked={this.collegeRemoved}
-                                dataSource={this.props.colleges}
-                            />
-                        </Col>  
-                    </Row>
-                </div>
-     */
+    
     renderCashItems(){
         return (
             <div style={{ height: '80%', width: '100%' }}>
@@ -174,7 +149,7 @@ class CollegeSettings extends React.Component {
         return (
             <Tabs defaultActiveKey="1" onChange={callback} className="config-tab">
                 <TabPane tab="Cash Config" key="1">{this.renderCashItems()}</TabPane>
-                <TabPane tab="Packages" key="2">{this.renderSconfig()}</TabPane>
+                <TabPane tab="Meals" key="2">{this.renderSconfig()}</TabPane>
             </Tabs>
         );
     }

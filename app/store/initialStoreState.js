@@ -4,10 +4,5 @@ export default {
     teachers: getSelector('personnel'),
     classes: getSelector('s_config'),
     courses: getAllocations(),
-    // programmes: getSelector('program'), 
-    // departments: getSelector('department'),
-    // classSettings: getSelector('class_period'),
-    // examSettings: getSelector('exam'),
-    colleges: getSelector('cash_item'),
-    allocations: []
+    colleges: getSelector('cash_item')
 };

@@ -6,215 +6,6 @@ import { Constants } from '../../../constants';
 let query;
 const types = Constants.dbActions;
 
-// export function getProgrammes() {
-//     query = 'SELECT * FROM Programme';
-
-//     return runSelectQuery(query);
-
-// }
-
-// export function getDepartment() {
-//     query = 'SELECT * FROM Department';
-
-//     return runSelectQuery(query);
-
-// }
-
-// export function getvenues() {
-//     query = 'SELECT * FROM Class';
-
-//     return runSelectQuery(query);
-// }
-
-// export function getTeacher() {
-//     query = 'SELECT * FROM lecturer';
-
-//     return runSelectQuery(query);
-// }
-
-// export const programID = student => {
-//     query = `SELECT id FROM program WHERE name = "${student.program}"`;
-//     return runSelectQuery(query);
-// };
-
-// export const addClass = classe => {
-//     query = `INSERT INTO classe (level, program) VALUES (${classe.level}, ${
-//       classe.program
-//     })`;
-//     runQuery(query);
-// };
-
-// export const getLecturerById = lecturer => {
-//     query = `SELECT * FROM user WHERE id = ${lecturer}`;
-//     return runSelectQuery(query);
-// };
-  
-// export const getClasseId = year => {
-//     query = `SELECT id FROM classe WHERE level = ${year}`;
-//     return runSelectQuery(query);
-// };
-
-// export const getDepartmentId = name => {
-//     query = `SELECT id FROM department WHERE name = "${name}"`;
-//     return runSelectQuery(query);
-// };
-
-// export const getLecturerId = name => {
-//   query = `SELECT id FROM lecturer WHERE surname = "${name.split(' ')[0]}" AND othername = "${name.split(' ')[1]}"`;
-//   return runSelectQuery(query);
-// };
-
-// export const lecturerQuery = (type, lecturer) => {
-  
-//     switch (type) {
-//       case types.INSERT:
-//         query = `INSERT INTO lecturer (surname, othername, title) VALUES 
-//         ("${lecturer.surname}", "${lecturer.othername}", "${lecturer.title}")`;
-//         runQuery(query);
-//         break;
-  
-//       case types.SELECT:
-//         query = 'SELECT * FROM lecturer ORDER BY surname ASC';
-//         return runSelectQuery(query);
-  
-//       case types.UPDATE:
-//         query = `UPDATE lecturer SET name = "${lecturer.name}", othername = "${
-//           lecturer.othername
-//         }", 
-//               title = "${lecturer.title}" WHERE surname = "${lecturer.surname}" AND othername = "${lecturer.othername}"`;
-//         runQuery(query);
-//         break;
-  
-//       case types.DELETE:
-//         query = `DELETE FROM lecturer WHERE surname = "${lecturer.surname}" AND "${lecturer.othername}"`;
-//         runQuery(query);
-//         break;
-  
-//       default:
-//         return null;
-//     }
-//   };
-
-//   export const courseQuery = (type, course) => {
- 
-//     switch (type) {
-//       case types.INSERT:
-//         query = `INSERT INTO course (code, name, department, lecturer) VALUES ("${course.code}", 
-//               "${course.name}", ${getDepartmentId(course.department)[0].id}, ${getLecturerId(course.lecturer)[0].id})`;
-//         runQuery(query);
-  
-//         // AddCourseClass(course);
-//         break;
-  
-//       case types.SELECT:
-//         query = 'SELECT * FROM course';
-//         return runSelectQuery(query);
-  
-//       case types.UPDATE:
-//         query = `UPDATE course SET name = "${course.name}", username = "${
-//           course.username
-//         }", 
-//               title = "${course.title}" WHERE username = "${course.username}"`;
-//         runQuery(query);
-//         break;
-  
-//       case types.DELETE:
-//         query = `DELETE FROM course WHERE id = ${course.id}`;
-//         runQuery(query);
-//         break;
-  
-//       default:
-//         return null;
-//     }
-//   };
-
-//   export const departmentQuery = (type, department) => {
- 
-//     switch (type) {
-//       case types.INSERT:
-//         query = `INSERT INTO department (name) VALUES ("${department.name}")`;
-//         runQuery(query);
-  
-//         // AddCourseClass(course);
-//         break;
-  
-//       case types.SELECT:
-//         query = 'SELECT * FROM department';
-//         return runSelectQuery(query);
-  
-//       case types.UPDATE:
-//         query = `UPDATE department SET name = "${department.name}" WHERE name = "${department.username}"`;
-//         runQuery(query);
-//         break;
-  
-//       case types.DELETE:
-//         query = `DELETE FROM course WHERE id = ${department.id}`;
-//         runQuery(query);
-//         break;
-  
-//       default:
-//         return null;
-//     }
-//   };
-
-//   export const programQuery = (type, program) => {
- 
-//     switch (type) {
-//       case types.INSERT:
-//         query = `INSERT INTO program (name, department) VALUES ("${program.name}", ${getDepartmentId(program.department)[0].id})`;
-//         // console.log(query);
-//         runQuery(query);
-//         // AddCourseClass(course);
-//         break;
-  
-//       case types.SELECT:
-//         query = 'SELECT * FROM program';
-//         return runSelectQuery(query);
-  
-//       case types.UPDATE:
-//         query = `UPDATE program SET name = "${program.name}", department = "${program.department}"  WHERE name = "${program.name}"`;
-//         runQuery(query);
-//         break;
-  
-//       case types.DELETE:
-//         query = `DELETE FROM progeam WHERE id = ${program.id}`;
-//         runQuery(query);
-//         break;
-  
-//       default:
-//         return null;
-//     }
-//   };
-
-//   export const classeQuery = (type, classe) => {
-  
-//     switch (type) {
-//       case types.INSERT:
-//         query = `INSERT INTO classe (name, examCapacity, classCapacity) VALUES 
-//         ("${classe.name}", "${classe.examCapacity}", "${classe.classCapacity}")`;
-//         runQuery(query);
-//         break;
-  
-//       case types.SELECT:
-//         query = 'SELECT * FROM classe';
-//         return runSelectQuery(query);
-  
-//       case types.UPDATE:
-//         query = `UPDATE classe SET name = "${classe.name}" WHERE name = "${classe.name}"`;
-//         runQuery(query);
-//         break;
-  
-//       case types.DELETE:
-//         query = `DELETE FROM classe WHERE name = "${classe.name}"`;
-//         runQuery(query);
-//         break;
-  
-//       default:
-//         return null;
-//     }
-//   };
-
-
   /**
    * Rewriting all the queries for the 😋 database
    *
@@ -234,7 +25,7 @@ const types = Constants.dbActions;
   };
 
   export const getAllocations = () => {
-    query = `select personnel.p_id,name, date, start, end, duration_mins, period from personnel join session on personnel.p_id = session.p_id `;
+    query = `SELECT session_id, personnel.p_id, name, date, start, end, duration_mins, period from personnel join session on personnel.p_id = session.p_id `;
     return runSelectQuery(query);
   };
 
@@ -309,21 +100,21 @@ const types = Constants.dbActions;
     runQuery(query);
   };
 
-  export const addProgramHasCourse = (program, course) => {
-    query = `INSERT INTO program_has_course (program_id, course_id) VALUES (${program}, ${course})`;
-    runQuery(query);
-  };
-
-  export const addCourse = course => {
-    query = `INSERT INTO course (name, code, level, semester, hasLab)
-    VALUES ("${course.name}", "${course.code}", ${course.level}, ${course.semester}, ${course.hasLab})`;
-    runQuery(query);
-  };
 
   export const addAllocations = elem => {
     query = `INSERT INTO session (period, start, end, date, p_id, duration_mins)
     VALUES ("${elem.period}", "${elem.start}", "${elem.end}", "${elem.date}", ${elem.p_id}, ${elem.duration_mins})`;
     runQuery(query);
+
+    //query to get the id of the last session entered
+    let session_id_query = `SELECT session_id from session 
+    WHERE p_id = ${elem.p_id} 
+    AND period = "${elem.period}" 
+    AND start = "${elem.start}" 
+    AND end = "${elem.end}" 
+    AND date = "${elem.date}" 
+    AND duration_mins = ${elem.duration_mins}`;
+    return runSelectQuery(session_id_query)[0].session_id;
   };
 
   export const addInvigilationAllawa = (elem) => {
@@ -336,11 +127,11 @@ const types = Constants.dbActions;
       let rate_type = "";
 
       switch (status) {
-        case "Senior member":
+        case "Senior Member":
             rate_type = "rate_senior";
             break;
 
-        case "Non-senior member":
+        case "Non-senior Member":
             rate_type = "rate_non_senior";
             break;
       }
@@ -368,7 +159,8 @@ const types = Constants.dbActions;
         SELECT s_config_id, p_id, date 
         FROM s_config
         JOIN invigilation_allowances ON s_config.session_count = invigilation_allowances.session_count
-        WHERE p_id = ${elem.p_id}`;
+        WHERE p_id = ${elem.p_id}
+        AND date = "${elem.date}"`;
         runQuery(sQuery);
 
     } else {
@@ -389,12 +181,12 @@ const types = Constants.dbActions;
   export const generateInvigilation = () => {
     query = `SELECT 
     name,
-    (sum(duration_total)/60) as hours,
+    sum(duration_total) as duration_total,
     status,
     rate_hr,
     round((sum(duration_total)*round(rate_min,4)),2) as amount,
-    round(((SELECT item_amount from cash_item WHERE item = lower("Tax"))*sum(duration_total)*round(rate_min,4)),2) as Tax,
-    round(((sum(duration_total)*round(rate_min,4))*(1 - (SELECT item_amount from cash_item WHERE item = lower("Tax") ))),2) as amount_due
+    round(((SELECT item_amount from cash_item WHERE item = lower("tax"))*sum(duration_total)*round(rate_min,4)),2) as tax,
+    round(((sum(duration_total)*round(rate_min,4))*(1 - (SELECT item_amount from cash_item WHERE item = lower("tax") ))),2) as amount_due
     FROM personnel
     JOIN invigilation_allowances 
     ON personnel.p_id = invigilation_allowances.p_id
@@ -404,7 +196,7 @@ const types = Constants.dbActions;
 
   export const SnackCalculation = () => {
     query = `SELECT 
-    name,
+    personnel.name,
     sum(amount) as amount,
     sum(session_count) as sessions
     FROM personnel
@@ -420,12 +212,12 @@ const types = Constants.dbActions;
     query = `SELECT 
     name,
     date,
-    round((sum(duration_total)/60),2) as hours,
+    sum(duration_total) as duration_total,
     status,
     rate_hr,
     round((sum(duration_total)*rate_min),2) as amount,
-    round(((SELECT item_amount from cash_item WHERE item = lower("Tax"))*sum(duration_total)*rate_min),2) as Tax,
-    round(((sum(duration_total)*rate_min)*(1 - (SELECT item_amount from cash_item WHERE item = lower("Tax") ))),2) as amount_due,
+    round(((SELECT item_amount from cash_item WHERE item = lower("tax"))*sum(duration_total)*rate_min),2) as tax,
+    round(((sum(duration_total)*rate_min)*(1 - (SELECT item_amount from cash_item WHERE item = lower("tax") ))),2) as amount_due,
     (
       SELECT
       sum(amount)
@@ -434,12 +226,12 @@ const types = Constants.dbActions;
       ON personnel.p_id = snack_allowances.p_id
       JOIN s_config
       ON s_config.s_config_id = snack_allowances.s_config_id
-        WHERE name = "${name}"
+        WHERE personnel.name = "${name}"
         AND snack_allowances.date = invigilation_allowances.date
       group by snack_allowances.date
     ) as snack_allowance,
     (
-      round(((sum(duration_total)*rate_min)*(1 - (SELECT item_amount from cash_item WHERE item = lower("Tax") ))),2) 
+      round(((sum(duration_total)*rate_min)*(1 - (SELECT item_amount from cash_item WHERE item = lower("tax") ))),2) 
       + 
       (
         SELECT
@@ -449,7 +241,7 @@ const types = Constants.dbActions;
         ON personnel.p_id = snack_allowances.p_id
         JOIN s_config
         ON s_config.s_config_id = snack_allowances.s_config_id
-        WHERE name = "${name}"
+        WHERE personnel.name = "${name}"
         AND snack_allowances.date = invigilation_allowances.date
         group by snack_allowances.date
       )
@@ -457,7 +249,7 @@ const types = Constants.dbActions;
     FROM personnel
     JOIN invigilation_allowances 
     ON personnel.p_id = invigilation_allowances.p_id
-    WHERE name = "${name}"
+    WHERE personnel.name = "${name}"
     group by invigilation_allowances.date`;
 
     return runSelectQuery(query);
@@ -507,7 +299,7 @@ const types = Constants.dbActions;
   };
 
   export const updatePackage = pack => {
-    query = `UPDATE s_config SET snack_count = "${pack.snack_count}", session_count = ${pack.session_count}, lunch_count = ${pack.lunch_count} WHERE session_count = ${pack.session_count}`;
+    query = `UPDATE s_config SET snack_count = "${pack.snack_count}", session_count = ${pack.session_count}`;
     runQuery(query);
   };
 
@@ -570,8 +362,22 @@ const types = Constants.dbActions;
   };
 
   export const deleteAllocation = item => {
+    console.log(item);
     query = `DELETE FROM session WHERE session_id = "${item.session_id}"`;
     runQuery(query);
+
+    //query to reduce the number of sessions in the invigilation table
+    let invigilation_session_reduction_query = `UPDATE invigilation_allowances SET 
+    session_count = ((SELECT session_count from invigilation_allowances WHERE date = "${item.date}" AND p_id = ${item.p_id}) - 1),
+    duration_total = ((SELECT duration_total from invigilation_allowances WHERE date = "${item.date}" AND p_id = ${item.p_id}) - ${item.duration_mins})
+    WHERE p_id = ${item.p_id} AND date = "${item.date}"`;
+    runQuery(invigilation_session_reduction_query);
+
+    //query to reduce the number of sessions in the snack allowances table
+    let snack_session_reduction_query = `UPDATE snack_allowances SET 
+    s_config_id = ((SELECT s_config_id from snack_allowances WHERE date = "${item.date}" AND p_id = ${item.p_id}) - 1)
+    WHERE p_id = ${item.p_id} AND date = "${item.date}"`;
+    runQuery(snack_session_reduction_query);
   };
 
   export const deletePackage = item => {
