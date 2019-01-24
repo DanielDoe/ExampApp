@@ -3,6 +3,7 @@ import { ipcRenderer } from 'electron'
 import { SnackReport } from './snackReport'
 import { SnackCalculation } from '../_shared/services/dataService'
 import { Table, Button, Select, Row, Col, Icon } from 'antd'
+import '../Teachers/teachers'
 
 const Option = Select.Option
 

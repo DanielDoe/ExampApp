@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Table, Button, Row, Col, Icon } from 'antd'
 import { generateInvigilation } from '../_shared/services/dataService'
 import { InvigilationReport } from './invigilationReport'
+import '../Teachers/teachers'
 // import {ViewPDF} from '../_shared/services/pdfGenerator';
 
 const columns: Array<Object> = [

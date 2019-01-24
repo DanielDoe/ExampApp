@@ -55,7 +55,7 @@ export default class TeacherList extends React.Component {
                     <div className="action-column grid">
                         <button
                             className="edit column"
-                            onClick={() => this.props.onEditClicked(record)}>
+                            onClick={() => {console.log(record); this.props.onEditClicked(record)}}>
                             Edit
                         </button>
     

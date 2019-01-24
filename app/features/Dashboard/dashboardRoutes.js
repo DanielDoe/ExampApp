@@ -30,4 +30,10 @@ export default [
         path: '/settings/college',
         component: Settings.CollegeSettings
     }
+    // {
+    //     title: 'Error Page',
+    //     exact: true,
+    //     path: '/settings/rrror',
+    //     component: ErrorComponent
+    // }
 ];

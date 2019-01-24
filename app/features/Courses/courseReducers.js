@@ -22,7 +22,6 @@ export default function (state = initialState, action) {
         case types.COURSE_REMOVED:
             newstate = state;
             console.log(state);
-            console.log(action.payload);
             newstate = state.filter((elem: Object) => elem.session_id !== action.payload.session_id);
             return newstate;
 

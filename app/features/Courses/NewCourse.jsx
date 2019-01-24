@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getSelector, getElementId, getNameById } from '../_shared/services/dataService';
-import { Form, Icon, Input, Button, Select, InputNumber, Row, Col, DatePicker, TimePicker } from 'antd';
+import { Form, Modal, Icon, Input, Button, Select, InputNumber, Row, Col, DatePicker, TimePicker } from 'antd';
 import moment from 'moment';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
+
 
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 
@@ -26,6 +27,13 @@ function handleChange(value) {
   
   function handleFocus() {
     // console.log('focus');
+  }
+
+  function warning() {
+    Modal.warning({
+      title: 'This is a warning message',
+      content: 'some messages...some messages...',
+    });
   }
 
 class NewCourseForm extends React.Component {
@@ -53,7 +61,7 @@ class NewCourseForm extends React.Component {
           ) {
             const data = nextProps.fieldData.program;  
             this.props.form.setFieldsValue({
-                staff: nextProps.fieldData.p_id,
+                staff: nextProps.fieldData.name,
                 period: nextProps.fieldData.period,
                 start: moment(nextProps.fieldData.start, 'HH:mm A'),
                 end: moment(nextProps.fieldData.end, 'HH:mm A'),
@@ -66,6 +74,7 @@ class NewCourseForm extends React.Component {
     // reset form data when submitted
     handleReset = () => {
         this.props.form.resetFields();
+        this.setState({ counter: 1 }); 
     }
 
     indexError = () => {
@@ -74,6 +83,7 @@ class NewCourseForm extends React.Component {
     // this checks the form validation  
     hasErrors(fieldsError) {
         const fromAnt = (Object.keys(fieldsError).some(field => fieldsError[field]));
+        console.log(fieldsError);
         return fromAnt;
     }
 
@@ -111,12 +121,22 @@ class NewCourseForm extends React.Component {
             const end = moment(values['end'], "HH:mm A");
 
             const minutes = moment.duration(end.diff(start)).asMinutes();
+            if(minutes <= 0){
+                // TODO: write modal to display
+                return (
+                    Modal.warning({
+                        title: 'Invalid Time',
+                        content: 'Please check your start and end time.',
+                        okText: 'Ok'
+                      })
+                );
+            }
 
 			if (!err) {
                 const course: Object = {
                     session_id: values.session_id,
                     date: values['date'],
-                    // name: getElementId(fieldsValue.name, 'personnel'),
+                    name: fieldsValue.staff,
                     p_id: getElementId(fieldsValue.staff, 'personnel')[0].p_id,
                     // code: values.code.trim().toUpperCase(),
                     // hasLab: (values.hasLab === 'yes') ? 1 : 0,
@@ -125,6 +145,7 @@ class NewCourseForm extends React.Component {
                     period: values.period,
                     duration_mins: minutes
                 };
+                console.log(course);
                 this.props.onCourseEditted(course);
             }
 

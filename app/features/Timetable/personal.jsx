@@ -6,6 +6,7 @@ import {
   PersonalInvigilation,
   getSelector
 } from '../_shared/services/dataService'
+import '../Teachers/teachers'
 
 const columns: Array<Object> = [
   { title: 'SN', dataIndex: 'pid', key: 'id' },

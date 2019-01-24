@@ -24,6 +24,12 @@ const types = Constants.dbActions;
     return runSelectQuery(query);
   };
 
+  // this is a global funtion to return table ids 👊
+  export const getElementName = (name, table) => {
+    query = `SELECT p_id FROM ${table} WHERE name = "${name}"`;
+    return runSelectQuery(query);
+  };
+
   export const getAllocations = () => {
     query = `SELECT session_id, personnel.p_id, name, date, start, end, duration_mins, period from personnel join session on personnel.p_id = session.p_id `;
     return runSelectQuery(query);
@@ -314,10 +320,28 @@ const types = Constants.dbActions;
     runQuery(query);
   };
 
-  export const updateSession = sec => {
-    query = `UPDATE session SET session_count = ${sec.session},  snack_count = ${sec.snack}, 
-    lunch_count = ${sec.lunch}, amount = ${sec.amount} WHERE id = ${sec.id}`;
+  export const updateAllocation = session => {
+    // get the number of sessions so far
+    const first_session_query = `SELECT count(*) as s_count, status FROM session JOIN personnel ON session.p_id = personnel.p_id 
+    WHERE session.p_id = ${session.p_id} AND date = "${session.date}"`;
+
+    let s_count = runSelectQuery(first_session_query)[0].s_count;
+
+    query = `UPDATE session SET period = "${session.period}", start = "${session.start}", 
+    end = "${session.end}", date = "${session.date}", p_id = ${session.p_id}, duration_mins = ${session.duration_mins} 
+    WHERE session_id = ${session.session_id}`;
     runQuery(query);
+
+    let iQuery = `UPDATE invigilation_allowances SET 
+    session_count =  (SELECT count(*) FROM session WHERE p_id = ${session.p_id} AND date = "${session.date}"),
+    duration_total = (SELECT sum(duration_mins) FROM session WHERE p_id = ${session.p_id} AND date = "${session.date}")
+    WHERE date = "${session.date}" and p_id = ${session.p_id}`;
+    runQuery(iQuery);
+
+    let sQuery = `UPDATE snack_allowances SET 
+    s_config_id= (SELECT s_config_id FROM s_config where session_count = ${s_count})
+    WHERE p_id = ${session.p_id} AND date = "${session.date}"`;
+    runQuery(sQuery);
   };
   
 

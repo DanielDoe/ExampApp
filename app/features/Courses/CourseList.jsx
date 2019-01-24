@@ -97,6 +97,15 @@ export default class CourseList extends React.Component {
                 render: (text, record) => (
                     <div className="action-column grid">
                         <button
+                            className="edit column"
+                            onClick={() => {
+                                // console.log(record);
+                                this.props.onEditClicked(record);
+                            }}>
+                            Edit
+                        </button>
+
+                        <button
                             className="delete column"
                             onClick={() => this.props.onDeleteClicked(record)}>
                             Delete
@@ -144,6 +153,7 @@ export default class CourseList extends React.Component {
                     <Table
                         className="course-list-table"
                         // loading
+                        pagination={{ pageSize: 10 }}
                         dataSource={dataSource}
                         columns={columns} />
                 </div>

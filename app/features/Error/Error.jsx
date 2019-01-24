@@ -44,6 +44,9 @@ export default function Error() {
                     </Row> 
                 </Col>
             </Row>
+            <Row>
+                <p className="producers">© Daniel Doe & Clement Nartey</p>
+            </Row>
         </div>
     );
 }

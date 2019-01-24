@@ -60,12 +60,14 @@ class Teachers extends React.Component {
 
     // Edit (or add) a teacher
     teacherEditted(teacher: Object) {
-        if (this.state.editMode === true && teacher.id !== -1) {
-            // We are in edit mode. Find the teacher and splice the list
-            // const doEditing = (array: Array<Object>) => {
-            //     return array.map(element => (element.id === teacher.id) ? teacher : element);
-            // };
-
+        
+        if (this.state.editMode === true) {
+            console.log("Teacher: ", teacher, "Field: ", this.state.field);
+            const e_teacher = {
+                ...teacher,
+                p_id : this.state.field.p_id
+            }
+            console.log(teacher);
             this.props.teacherEditted(teacher);
             updateStaff(teacher);
             this.cancelEditMode();

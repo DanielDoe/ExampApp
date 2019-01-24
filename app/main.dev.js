@@ -71,7 +71,8 @@ app.on('ready', async () => {
         height: 930,
         minWidth: 1280,
         minHeight: 800,
-        show: false
+        show: false,
+        icon: __dirname + '/desktop.png'
     });
 
     // Disable the menu bar and set as full screen always

@@ -35,3 +35,11 @@
     }
     
 }
+
+.producers {
+    margin: 0rem auto;
+    font-size: medium;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

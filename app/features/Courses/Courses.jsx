@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Modal, Icon } from 'antd';
-import { getSelector, addAllocations, addInvigilationAllawa, deleteAllocation } from '../_shared/services/dataService';
+import { getSelector, addAllocations, addInvigilationAllawa, deleteAllocation, updateAllocation } from '../_shared/services/dataService';
 
 import './courses.css';
 import CourseList from './CourseList';
@@ -57,17 +57,14 @@ class Courses extends React.Component {
 
     // Edit (or add) a course
     courseEditted(course: Object) {
-        if (this.state.editMode === true && course.id !== -1) {
-            // We are in edit mode. Find the course and splice the list
-            // const doEditing = (array: Array<Object>) => {
-            //     return array.map(element => (element.id === course.id) ? course : element);
-            // };
-
-            this.props.courseEditted(course);
-            // updateCourse(course);
-            // const course_id = getElementId(course.code, 'course');
-            // console.log(course.programs.map(element => addProgramHasCourse(element, course_id)));
-            // courseQuery('update', course);
+        if (this.state.editMode === true && course.session_id !== -1) {
+            const e_course = {
+                ...course,
+                session_id : this.state.field.session_id
+            }
+            console.log(e_course);
+            updateAllocation(e_course);
+            this.props.courseEditted(e_course);
             this.cancelEditMode();
 
         } else {
@@ -75,11 +72,6 @@ class Courses extends React.Component {
             addInvigilationAllawa(course);
             course.session_id = session_id_from_db;
             this.props.courseAdded(course);
-            // courseQuery('add', course);
-            // addCourse(course);
-            // const course_id = getElementId(course.name, 'course');
-            // console.log(course_id);
-            // course.programs.map(element => addProgramHasCourse(element, getElementId(course.name, 'course')[0].id));
         }
 
         this.cancelEditMode();
@@ -131,8 +123,9 @@ class Courses extends React.Component {
      * @param {Object} course The course object to be editted
      */
     triggerEditMode(course: Object) {
+        console.log(course);
         this.setState({
-            editID: course.id,
+            editID: course.session_id,
             editMode: true,
             field: course
         });
