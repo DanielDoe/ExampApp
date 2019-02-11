@@ -1,1 +1,1 @@
-This is a small project for exams and invigilation management
+This is a small project for exams and invigilation management for KNUST
